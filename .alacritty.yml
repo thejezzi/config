@@ -1,0 +1,56 @@
+# Allgemeine Einstellungen
+window:
+  title: "Mein Alacritty Terminal"
+  dimensions:
+    columns: 100
+    lines: 30
+
+# Farbeinstellungen
+colors:
+  # Standardfarben
+  primary:
+    background: '0x1e1e1e'
+    foreground: '0xeaeaea'
+
+  # ANSI-Farben
+  normal:
+    black: '0x000000'
+    red: '0xff0000'
+    green: '0x00ff00'
+    yellow: '0xffff00'
+    blue: '0x0000ff'
+    magenta: '0xff00ff'
+    cyan: '0x00ffff'
+    white: '0xffffff'
+
+  # Helle Variante der ANSI-Farben
+  bright:
+    black: '0x808080'
+    red: '0xff0000'
+    green: '0x00ff00'
+    yellow: '0xffff00'
+    blue: '0x0000ff'
+    magenta: '0xff00ff'
+    cyan: '0x00ffff'
+    white: '0xffffff'
+
+# Schriftart-Einstellungen
+font:
+  normal:
+    family: 'FiraCode Nerd Font'
+    style: Regular
+  bold:
+    family: 'FiraCode Nerd Font'
+    style: Bold
+  italic:
+    family: 'FiraCode Nerd Font'
+    style: Italic
+  bold_italic:
+    family: 'FiraCode Nerd Font'
+    style: Bold Italic
+
+  size: 16
+
+# Weitere Einstellungen
+scrolling:
+  history: 1000
