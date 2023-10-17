@@ -55,3 +55,6 @@ font:
 # Weitere Einstellungen
 scrolling:
   history: 1000
+
+key_bindings:
+  - { key: F12, action: 'ToggleFullscreen' }
