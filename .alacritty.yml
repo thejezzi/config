@@ -1,4 +1,3 @@
-# Allgemeine Einstellungen
 window:
   title: "Mein Alacritty Terminal"
   dimensions:
@@ -10,14 +9,12 @@ window:
   # keybindings section.
   #option_as_alt: Both
 
-# Farbeinstellungen
 colors:
-  # Standardfarben
   primary:
     background: '0x191919'
     foreground: '0xeaeaea'
 
-  # ANSI-Farben
+  # ANSI
   normal:
     black: '0x000000'
     red: '0xff0000'
@@ -28,7 +25,6 @@ colors:
     cyan: '0x00cfcf'
     white: '0xfffffa'
 
-  # Helle Variante der ANSI-Farben
   bright:
     black: '0x808080'
     red: '0xff0000'
@@ -39,7 +35,6 @@ colors:
     cyan: '0x00ffff'
     white: '0xffffff'
 
-# Schriftart-Einstellungen
 font:
   normal:
     family: 'FiraCode Nerd Font'
@@ -56,7 +51,6 @@ font:
 
   size: 14
 
-# Weitere Einstellungen
 scrolling:
   history: 1000
 
