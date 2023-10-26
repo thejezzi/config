@@ -5,6 +5,10 @@ window:
     columns: 100
     lines: 30
   opacity: 0.9
+  # Comment in when on mac and you wanna use keybindings that require
+  # the ALT key. If you can't type characters like { or [, see the
+  # keybindings section.
+  #option_as_alt: Both
 
 # Farbeinstellungen
 colors:
@@ -57,4 +61,21 @@ scrolling:
   history: 1000
 
 key_bindings:
+  - { key: F11, action: 'ToggleFullscreen' }
   - { key: F12, action: 'ToggleFullscreen' }
+
+
+  # Mac-KeyBindings on OptionAsAlt
+  # Comment in when on mac the option key should be interpreted as alt key.
+  # Somehow this breaks all keybindings of the option key even when you set
+  # it to OnlyLeft or OnlyRight. So we gotta set them again:
+  #- { key: 23, mods: Alt,       chars: "["  }  # Alt+5 -> [
+  #- { key: 22, mods: Alt,       chars: "]"  }  # Alt+6 -> [
+  #- { key: 26, mods: Alt,       chars: "|"  } # Alt+7 -> |
+  #- { key: 28, mods: Alt,       chars: "{"  } # Alt+8 -> {
+  #- { key: 25, mods: Alt,       chars: "]"  } # Alt+9 -> }
+  #- { key: 37, mods: Alt,       chars: "@"  } # Alt+L -> @
+  #- { key: 26, mods: Alt|Shift, chars: "\\" } # Alt+9 -> }
+
+cursor:
+  style: Beam
