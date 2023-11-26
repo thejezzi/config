@@ -1,9 +1,9 @@
-source ~/.znap/zsh-snap/znap.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+eval "$(zoxide init zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,11 +112,12 @@ fi
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias nvimconfig="nvim ~/.config/nvim"
+alias nvimconfig="cd ~/.config/nvim && nvim"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.znap/zsh-snap/znap.zsh
+# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
