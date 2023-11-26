@@ -317,8 +317,6 @@ is_installed() {
             return 0
         fi
     fi
-
-    echo "Binary or package '$package_name' is not installed."
     return 1
 }
 
@@ -429,7 +427,7 @@ fi
 # nodejs
 if ! is_installed "node"; then
     if confirmation "Should i try to install nodejs? \n($(print_install_command "nodejs"))"; then
-        echo "Huch"
+        install_package "nodejs"
     else
         MANUAL_INSTALL_LIST+=("nodejs")
     fi
