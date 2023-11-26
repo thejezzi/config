@@ -426,8 +426,16 @@ fi
 
 # nodejs
 if ! is_installed "node"; then
-    if confirmation "Should i try to install nodejs? \n($(print_install_command "nodejs"))"; then
-        install_package "nodejs"
+    if confirmation "Should i try to install nodejs? \n(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash)"; then
+        print_color "$BLUE_FG" "Installing NVM and the latest lts version"
+
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+        export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+        nvm install --lts
+        nvm use --lts
     else
         MANUAL_INSTALL_LIST+=("nodejs")
     fi
@@ -442,7 +450,7 @@ if ! is_installed "yarn" && is_installed "npm"; then
 fi
 
 if ! is_installed "yarn" && ! is_installed "npm"; then
-    echo "If you have installed nodejs and want to install yarn make sure to
+    print_color "$YELLOW_FG" "If you have installed nodejs and want to install yarn make sure to
     reload the shell once and rerun this script and the option to install yarn
     should reveal itself :)"
 fi
