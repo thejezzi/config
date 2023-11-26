@@ -491,7 +491,7 @@ if confirmation "Install neovim?"; then
 fi
 
 if confirmation "Do you want to use my neovim config as well?"; then
-    git clone https://github.com/thejezzi/normal-nvim "$HOME/.config/nvim"
+    git clone https://github.com/thejezzi/nvim-normal "$HOME/.config/nvim"
 
     print_color "$YELLOW_FG" "For my config to work you'll may need some additional
     binaries. Just run :checkhealth and neovim will tell you what to install to get
