@@ -378,7 +378,8 @@ print_zsh_cmd() {
 }
 
 install_ohmyzsh() {
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 }
 
 print_ohmyzsh_cmd() {
