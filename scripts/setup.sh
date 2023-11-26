@@ -419,6 +419,8 @@ if ! is_installed "rustup"; then
         https://sh.rustup.rs | sh(print_rustup_cmd \"rustup\"))"; then
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+        source "$HOME/.cargo/env"
+
     else
         MANUAL_INSTALL_LIST+=("rustup")
     fi
