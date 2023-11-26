@@ -384,6 +384,35 @@ print_ohmyzsh_cmd() {
     echo "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
 }
 
+install_neovim() {
+    get_current_system
+
+    case $CURRENT_SYSTEM in
+        "Linux (ubuntu)"|"Linux (debian)")
+            apt install neovim
+            ;;
+        "Linux (fedora)"|"Linux (rhel)")
+            dnf install neovim python3-neovim
+            ;;
+        "Linux (arch)"|"Linux (manjaro)")
+            pacman -S neovim
+            pacman -S python-pynvim
+            ;;
+        "Linux (opensuse)")
+            zypper install neovim
+            ;;
+        "macOS")
+            brew install neovim
+            ;;
+        "Windows")
+            print_color "$RED_FG" "If you're using windows you should consider using WSL2 and retry."
+            ;;
+        *)
+            print_color "$RED_FG" "It seems your running an OS we don't support, sorry buddy :("
+            ;;
+    esac
+}
+
 # Main
 
 # Perform general system checks
@@ -455,6 +484,45 @@ if ! is_installed "yarn" && ! is_installed "npm"; then
     print_color "$YELLOW_FG" "If you have installed nodejs and want to install yarn make sure to
     reload the shell once and rerun this script and the option to install yarn
     should reveal itself :)"
+fi
+
+if confirmation "Install neovim?"; then
+    install_neovim
+fi
+
+if confirmation "Do you want to use my neovim config as well?"; then
+    git clone https://github.com/thejezzi/normal-nvim "$HOME/.config/nvim"
+
+    print_color "$YELLOW_FG" "For my config to work you'll may need some additional
+    binaries. Just run :checkhealth and neovim will tell you what to install to get
+    a certain fetaure to work."
+fi
+
+#------------------------------------------------------------------------------#
+#----------------------------------Config - Files -----------------------------#
+#------------------------------------------------------------------------------#
+
+if confirmation "Are you using alacritty?"; then
+    mkdir -p "$HOME/.config/alacritty"
+    cp ".config/alacritty/*" "$HOME/.config/alacritty/"
+fi
+
+if confirmation "Do you use kitty?"; then
+    mkdir -p "$HOME/.config/kitty"
+    cp ".config/kitty/*" "$HOME/.config/kitty/"
+fi
+
+if confirmation "Do you use tmux?"; then
+    cp ".tmux.conf" "$HOME/.tmux.conf"
+fi
+
+if confirmation "Do you need a .zshrc file?"; then
+    cp ".zshrc" "$HOME/.zshrc"
+
+    "git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions"
+    "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+    "git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting"
+    "git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete"
 fi
 
 #------------------------------------------------------------------------------#
