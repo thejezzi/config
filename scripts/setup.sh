@@ -229,7 +229,7 @@ install_package() {
     if [ "$package_manager" = "brew" ]; then
         brew install "$package_name"
     else
-        sudo "$package_manager" install "$package_name"
+        "$package_manager" install "$package_name"
     fi
 }
 
@@ -266,7 +266,7 @@ print_install_command() {
     if [ "$package_manager" = "brew" ]; then
         echo "Command: brew install $package_name"
     else
-        echo "Command: sudo $package_manager install $package_name"
+        echo "Command: $package_manager install $package_name"
     fi
 }
 
@@ -312,7 +312,7 @@ is_installed() {
             return 0
         fi
     else
-        if sudo "$package_manager" -q list "$package_name" >/dev/null 2>&1; then
+        if "$package_manager" -q list "$package_name" >/dev/null 2>&1; then
             echo "Package '$package_name' is already installed."
             return 0
         fi
@@ -328,16 +328,16 @@ inst_zsh() {
 
     case $CURRENT_SYSTEM in
         "Linux (ubuntu)"|"Linux (debian)")
-            sudo apt install zsh
+            apt install zsh
             ;;
         "Linux (fedora)"|"Linux (rhel)")
-            sudo dnf install zsh
+            dnf install zsh
             ;;
         "Linux (arch)"|"Linux (manjaro)")
-            sudo pacman -S zsh
+            pacman -S zsh
             ;;
         "Linux (opensuse)")
-            sudo zypper install zsh
+            zypper install zsh
             ;;
         "macOS")
             brew install zsh
@@ -354,16 +354,16 @@ inst_zsh() {
 print_zsh_cmd() {
     case $CURRENT_SYSTEM in
         "Linux (ubuntu)"|"Linux (debian)")
-            echo "sudo apt install zsh"
+            echo "apt install zsh"
             ;;
         "Linux (fedora)"|"Linux (rhel)")
-            echo "sudo dnf install zsh"
+            echo "dnf install zsh"
             ;;
         "Linux (arch)"|"Linux (manjaro)")
-            echo "sudo pacman -S zsh"
+            echo "pacman -S zsh"
             ;;
         "Linux (opensuse)")
-            echo "sudo zypper install zsh"
+            echo "zypper install zsh"
             ;;
         "macOS")
             echo "brew install zsh"
